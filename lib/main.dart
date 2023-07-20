@@ -1,7 +1,5 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:test_firebase_chat_app2/router/config.dart';
 import 'app_state.dart';
@@ -26,26 +24,22 @@ class ChatApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(
-      providers: [
-       ],
-      child: MaterialApp.router(
-        title: "CWTV",
-        debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-            backgroundColor: Colors.grey.shade100,
-            elevatedButtonTheme: ElevatedButtonThemeData(
-              style: ButtonStyle(
-                backgroundColor: const MaterialStatePropertyAll(Colors.black87),
-                shape: MaterialStatePropertyAll(
-                  RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(16),
-                  ),
+    return MaterialApp.router(
+      title: "CWTV",
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+          backgroundColor: Colors.grey.shade100,
+          elevatedButtonTheme: ElevatedButtonThemeData(
+            style: ButtonStyle(
+              backgroundColor: const MaterialStatePropertyAll(Colors.black87),
+              shape: MaterialStatePropertyAll(
+                RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(16),
                 ),
               ),
-            )),
-        routerConfig: routes,
-      ),
+            ),
+          )),
+      routerConfig: routes,
     );
   }
 }
