@@ -1,3 +1,4 @@
-# test_firebase_chat_app2
+# Chat With The Void
 
-A new Flutter project.
+No real communication. Just put your thoughts out there.
+
