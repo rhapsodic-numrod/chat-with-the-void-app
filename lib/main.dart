@@ -40,6 +40,9 @@ class ChatApp extends StatelessWidget {
             ),
           )),
       routerConfig: routes,
+      scrollBehavior: ScrollConfiguration.of(context).copyWith(
+        physics: const BouncingScrollPhysics(),
+      ),
     );
   }
 }

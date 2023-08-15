@@ -8,11 +8,11 @@ class MessageTile extends StatelessWidget {
     super.key,
     required this.message,
     required this.username,
-    required this.created_at,
+    required this.createdAt,
   });
   final String? message;
   final String? username;
-  final Timestamp? created_at;
+  final Timestamp? createdAt;
 
   @override
   Widget build(BuildContext context) {
@@ -55,15 +55,28 @@ class MessageTile extends StatelessWidget {
           Align(
             alignment: Alignment.bottomRight,
             child: Text(
-              formatDate(created_at!.toDate(), [HH, ':', nn," | ",dd," ",M," ",yyyy,]),
-              style: const TextStyle(
-                color: Colors.white70,
-                fontSize: 12
-              ),
+              getFomattedDate(createdAt),
+              style: const TextStyle(color: Colors.white70, fontSize: 12),
             ),
           )
         ],
       ),
     );
+  }
+
+  String getFomattedDate(Timestamp? date) {
+    DateTime currentDate = DateTime.now();
+    Duration difference = currentDate.difference(date!.toDate());
+    if (difference.inMinutes == 0) {
+      return "just now";
+    } else if (difference.inHours < 24) {
+      if (difference.inHours == 0) {
+        return "${difference.inMinutes} minutes ago";
+      }
+      return "${difference.inHours} hours ago";
+    } else {
+      return formatDate(
+          date.toDate(), [HH, ':', nn, " | ", dd, " ", M, " ", yyyy]);
+    }
   }
 }

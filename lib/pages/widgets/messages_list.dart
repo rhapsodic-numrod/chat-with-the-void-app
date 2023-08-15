@@ -35,9 +35,13 @@ class MessagesList extends StatelessWidget {
             );
           }
 
-          return ListView(
-            children: snapshot.data!.docs
-                .map(
+          return SingleChildScrollView(
+            reverse: true,
+            keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+            child: ListView(
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                children: snapshot.data!.docs.map(
                   (document) {
                     Map<String, dynamic> message =
                         document.data()! as Map<String, dynamic>;
@@ -45,11 +49,10 @@ class MessagesList extends StatelessWidget {
                     return MessageTile(
                       message: message["message"],
                       username: message["author_username"],
-                      created_at: message["created_at"],
+                      createdAt: message["created_at"],
                     );
                   },
-                )
-                .toList()
+                ).toList()),
           );
         },
       ),

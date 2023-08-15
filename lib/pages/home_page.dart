@@ -13,7 +13,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        elevation: 0,
+        elevation: 10,
         backgroundColor: Colors.black87,
         title: const Text("CWTV"),
         centerTitle: true,
@@ -32,7 +32,6 @@ class HomePage extends StatelessWidget {
       ),
       body: Column(
         children: [
-          const SizedBox(height: 10),
           Expanded(child: MessagesList()),
           const MessageField()
         ],
